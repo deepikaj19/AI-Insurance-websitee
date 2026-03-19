@@ -134,4 +134,8 @@ Machine Learning:
 - Multi-city support  
 - Real-time analytics
 
+## Strategy Video:
+Click below to watch our 2-minute strategy explanation:
+Watch video-Strategy_video.mp4
+
 Our solution is a zero-touch, AI-driven parametric insurance system that ensures instant and automatic payouts without requiring workers to file claims manually.
