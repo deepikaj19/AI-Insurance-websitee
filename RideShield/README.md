@@ -1,106 +1,109 @@
-# 🛡️ RideShield — AI-Powered Income Protection for Delivery Partners
+AI-Powered Insurance Platform for Gig Workers
+Team: Matrix_Crew 
+Problem Statement
 
-> Parametric income insurance for gig delivery workers. Weekly coverage, automatic payouts, zero claims.
+Gig workers such as delivery partners and ride-hailing drivers rely heavily on daily earnings. However, their income is highly vulnerable to real-world disruptions like:
 
-![RideShield Demo](https://img.shields.io/badge/Status-Live-green) ![No API Keys](https://img.shields.io/badge/API%20Keys-Not%20Required-blue) ![Static App](https://img.shields.io/badge/Deploy-Static%20HTML-orange)
+🌧️ Heavy Rain
+🔥 Extreme Heat
+😷 Poor Air Quality
+📱 Platform/App Outages
 
----
+Existing insurance systems are:
 
-## 🚀 How to Run
+Slow and manual
+Not designed for micro-events
+Lacking real-time claim processing
 
-### Option 1: Open Directly (Simplest)
-Just double-click `index.html` — it opens in your browser. Done!
+This creates financial instability and uncertainty for gig workers.
 
-### Option 2: Local Server (Recommended)
-```bash
-# Clone the repo
-git clone https://github.com/YOUR_USERNAME/RideShield.git
-cd RideShield
+Solution Overview
 
-# Run with any local server:
+RideShield is an AI-powered micro-insurance platform designed to provide:
 
-# Using npx (Node.js required)
-npx http-server . -p 8080
+⚡ Real-time disruption detection
+💰 Instant automated payouts
+🤖 AI-based fraud detection
+📊 Transparent dashboards for users and admins
 
-# OR using Python
-python -m http.server 8080
+Our goal is to ensure financial protection, speed, and trust for gig workers. 
 
-# OR using VS Code Live Server extension — right-click index.html → Open with Live Server
-```
-Then open **http://localhost:8080** in your browser.
+Key Features
+👤 User Features
+Easy Signup/Login
+Personalized Insurance Plans
+Real-time Dashboard
+Wallet & Transactions Tracking
+Automated Claim Processing
 
-### Option 3: GitHub Pages (Free Hosting)
-1. Push this repo to GitHub
-2. Go to **Settings → Pages**
-3. Source: **Deploy from a branch** → select `main` → `/ (root)` → Save
-4. Your app will be live at `https://YOUR_USERNAME.github.io/RideShield/`
+Dynamic Insurance Plans
+Essential Plan – Basic coverage
+Growth Plan – Balanced protection
+Shield Max Plan – Premium coverage
 
-### Option 4: Netlify / Vercel (One-Click Deploy)
-1. Go to [netlify.com](https://netlify.com) → **Add new site → Import existing project**
-2. Connect your GitHub repo
-3. Deploy — no build settings needed!
+✔️ Pricing adjusts dynamically based on:
 
----
+City risk level
+User income
+Seasonal factors
 
-## 🔑 Demo Accounts (Pre-loaded)
+Disruption Detection System
 
-| Name | Email | Password | City | Plan |
-|------|-------|----------|------|------|
-| Ravi Kumar | ravi@sample.com | test123 | Chennai | Growth |
-| Priya Sharma | priya@sample.com | test123 | Delhi | Essential |
-| Arjun Reddy | arjun@sample.com | test123 | Mumbai | Shield Max |
+Automatically triggers claims for:
 
-Or **create your own account** via Sign Up!
+🌧️ Heavy Rain
+🔥 Extreme Heat
+😷 Severe AQI
+📱 App Outages
 
----
+AI-Based Fraud Detection
 
-## 📱 Features
+Each claim is verified using:
 
-- **Landing Page** — Product overview with key highlights
-- **Auth** — Login / Sign Up with full registration
-- **Plans** — 3 weekly tiers (₹49 / ₹69 / ₹99) with dynamic city-based pricing
-- **Dashboard** — Live weather, wallet, coverage details, claims history
-- **Simulate Disruptions** — Trigger rain, heat, AQI, outage events
-- **Auto-Claims** — Zero-click claim pipeline with instant payout
-- **AI Fraud Detection** — 5-layer simulated fraud check on every claim
-- **Admin Panel** — Analytics with Chart.js charts, user management, fraud alerts
-- **Wallet** — Full transaction history with running balance
+Duplicate claim detection
+Claim frequency analysis
+Location validation
+Activity tracking
+Income consistency checks
 
----
+✔️ Claims are:
 
-## 🛠️ Tech Stack
+Approved ✅
+Under Review ⚠️
+Rejected 🚫
 
-| Component | Technology |
-|-----------|-----------|
-| Frontend | HTML5, CSS3, Vanilla JavaScript |
-| Design | Glassmorphism, Space Grotesk + Source Serif 4 (Google Fonts) |
-| Charts | Chart.js (loaded via CDN) |
-| Storage | localStorage (no database needed) |
-| APIs | None required — all data is simulated |
+Admin Dashboard
+Monitor total users & policies
+Track claims & payouts
+Detect fraud alerts
+View analytics & risk insights
 
----
+Core Modules
+Authentication System
+Plan Management
+Dynamic Premium Calculation
+Claims & Wallet Management
+Fraud Detection Engine
+Admin Analytics Dashboard
 
-## 📁 Project Structure
+Demo Workflow
+User Registration
+Plan Selection
+Dashboard Overview
+Disruption Simulation
+Automatic Claim & Payout
+Fraud Detection Validation
+Admin Monitoring
 
-```
-RideShield/
-├── index.html    # Single-page app (all 5 views)
-├── style.css     # Design system & responsive styles
-├── script.js     # Application logic, AI simulation, Chart.js
-└── README.md     # This file
-```
+Tech Stack
+Frontend: HTML, CSS, JavaScript
+Storage: Browser LocalStorage
+Visualization: Chart.js (for analytics)
 
----
+Team Matrix_Crew
+Deepika J
+Saran V
+Afritha Shirin S
 
-## ⚡ Parametric Triggers
-
-| Trigger | Condition | Payout |
-|---------|-----------|--------|
-| 🌧️ Heavy Rain | Rainfall > 50mm/day | ₹800 |
-| 🔥 Extreme Heat | Temperature > 42°C | ₹600 |
-| 😷 Severe AQI | AQI > 300 for 4+ hrs | ₹500 |
-| 📱 App Outage | Platform down 2+ hrs | ₹400 |
-
----
-
-Built with ❤️ for India's delivery workers.
+Conclusion
+RideShield transforms traditional insurance into a real-time, automated, and AI-driven protection system tailored for gig workers.
