@@ -100,7 +100,8 @@ Frontend: HTML, CSS, JavaScript
 Storage: Browser LocalStorage
 Visualization: Chart.js (for analytics)
 
-Team Matrix_Crew
+Team Matrix_Crew:
+
 Deepika J
 Saran V
 Afritha Shirin S
