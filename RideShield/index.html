@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="RideShield — AI-powered parametric income insurance for India's gig delivery workers. Weekly coverage, automatic payouts, zero claims.">
+  <title>RideShield — Income Protection for Delivery Partners</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+</head>
+
+<body>
+
+  <!-- ═══════════════ SITE HEADER ═══════════════ -->
+  <header class="site-header" id="siteHeader">
+    <a href="#" class="brand" onclick="navigate('landing')">🛡️ RideShield</a>
+    <nav class="nav-row">
+      <a href="#" class="nav-link" onclick="navigate('landing')">About</a>
+      <a href="#" class="nav-link" onclick="navigate('plans')">Plans</a>
+      <a href="#" class="nav-link" onclick="navigate('dashboard')">Dashboard</a>
+      <a href="#" class="nav-link" onclick="navigate('admin')">Admin</a>
+    </nav>
+    <div class="user-actions" id="userActions">
+      <a href="#" class="login-link" onclick="navigate('auth')" id="headerLoginBtn">Login</a>
+    </div>
+  </header>
+
+  <!-- ═══════════════ LANDING PAGE ═══════════════ -->
+  <main class="page-container" id="page-landing">
+    <section class="landing-shell">
+      <section class="landing-hero">
+        <p class="kicker">RideShield Product</p>
+        <h1>Income insurance designed for delivery workers in volatile cities.</h1>
+        <p class="landing-subtext">
+          Parametric income protection for gig riders. When disruption happens — rain, heat, pollution —
+          the system detects it and credits your payout instantly. No claims. No paperwork. Zero friction.
+        </p>
+        <div class="cta-row">
+          <a href="#" class="cta-primary" onclick="navigate('auth')">Login / Sign Up</a>
+          <a href="#" class="cta-ghost" onclick="navigate('plans')">View Plans</a>
+          <a href="#" class="cta-ghost" onclick="navigate('dashboard')">Open Dashboard</a>
+        </div>
+      </section>
+
+      <section class="highlight-grid">
+        <article class="highlight-card">
+          <h2>Parametric Engine</h2>
+          <p>Payouts trigger on verified disruption signals like extreme rainfall, AQI, heat, and app outage events.</p>
+        </article>
+        <article class="highlight-card">
+          <h2>Weekly Coverage</h2>
+          <p>Premium bands are tuned for gig-worker cashflow, so protection feels affordable and predictable.</p>
+        </article>
+        <article class="highlight-card">
+          <h2>AI Fraud Screen</h2>
+          <p>Claim workflows run through anomaly checks before approvals, reducing bad payouts while keeping speed.</p>
+        </article>
+      </section>
+
+      <section class="features-section">
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps-grid">
+          <div class="step-card">
+            <span class="step-num">01</span>
+            <h3>Register & Subscribe</h3>
+            <p>Sign up with your city & delivery platform. Choose a weekly plan that fits your earnings.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">02</span>
+            <h3>We Monitor 24/7</h3>
+            <p>Our system continuously tracks weather, AQI, and disruption data for your city.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">03</span>
+            <h3>Auto-Detect & Pay</h3>
+            <p>When a trigger fires — rain > 50mm, AQI > 300, temp > 42°C — payout is credited instantly to your wallet.
+            </p>
+          </div>
+        </div>
+      </section>
+
+
+    </section>
+  </main>
+
+  <!-- ═══════════════ AUTH PAGE ═══════════════ -->
+  <main class="page-container hidden" id="page-auth">
+    <section class="auth-shell">
+      <section class="auth-card">
+        <p class="kicker">Account Access</p>
+        <h1 id="authTitle">Welcome back</h1>
+        <p class="auth-copy">Use login to continue to your dashboard, or sign up to create a new account.</p>
+
+        <div class="auth-switch">
+          <button type="button" class="switch-active" id="loginTab" onclick="switchAuthMode('login')">Login</button>
+          <button type="button" class="switch-idle" id="signupTab" onclick="switchAuthMode('signup')">Sign Up</button>
+        </div>
+
+        <form class="auth-form" id="authForm" onsubmit="handleAuth(event)">
+          <div id="signupFields" class="hidden">
+            <label>Full Name
+              <input type="text" id="authName" placeholder="Ravi Kumar">
+            </label>
+            <label>Phone Number
+              <input type="tel" id="authPhone" placeholder="9876543210">
+            </label>
+            <label>City
+              <select id="authCity">
+                <option value="Chennai">Chennai</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Bengaluru">Bengaluru</option>
+                <option value="Coimbatore">Coimbatore</option>
+                <option value="Hyderabad">Hyderabad</option>
+              </select>
+            </label>
+            <label>Delivery Platform
+              <select id="authPlatform">
+                <option value="Swiggy">Swiggy</option>
+                <option value="Zomato">Zomato</option>
+                <option value="Dunzo">Dunzo</option>
+                <option value="Blinkit">Blinkit</option>
+              </select>
+            </label>
+            <label>Avg Daily Income (₹)
+              <input type="number" id="authIncome" placeholder="1000" min="100" step="50">
+            </label>
+          </div>
+          <label>Email
+            <input type="email" id="authEmail" placeholder="ravi@sample.com" required>
+          </label>
+          <label>Password
+            <input type="password" id="authPassword" placeholder="Minimum 6 characters" required minlength="6">
+          </label>
+          <button type="submit" id="authSubmitBtn">Login to Dashboard</button>
+          <p id="authError" class="error hidden"></p>
+        </form>
+      </section>
+    </section>
+  </main>
+
+  <!-- ═══════════════ PLANS PAGE ═══════════════ -->
+  <main class="page-container hidden" id="page-plans">
+    <section class="plans-shell">
+      <section class="plans-hero">
+        <p class="kicker">Subscription Plans</p>
+        <h1>Pick weekly protection that matches your earning rhythm.</h1>
+        <p class="landing-subtext">Pricing adjusts dynamically based on your city's risk profile. Riskier zones pay
+          slightly more — but benefit fastest.</p>
+      </section>
+
+      <section class="plans-grid" id="plansGrid">
+        <!-- Rendered by JS -->
+      </section>
+
+      <section class="risk-factor-section">
+        <h2 class="section-title">City Risk Multipliers</h2>
+        <div class="risk-grid">
+          <div class="risk-chip risk-high">Chennai <span>1.5×</span></div>
+          <div class="risk-chip risk-high">Mumbai <span>1.4×</span></div>
+          <div class="risk-chip risk-medium">Delhi <span>1.3×</span></div>
+          <div class="risk-chip risk-medium">Bengaluru <span>1.2×</span></div>
+          <div class="risk-chip risk-low">Hyderabad <span>1.1×</span></div>
+          <div class="risk-chip risk-low">Coimbatore <span>1.0×</span></div>
+        </div>
+      </section>
+
+      <section class="triggers-section">
+        <h2 class="section-title">Parametric Triggers</h2>
+        <div class="triggers-grid">
+          <div class="trigger-card">
+            <span class="trigger-icon">🌧️</span>
+            <h3>Heavy Rain</h3>
+            <p>Rainfall &gt; 50mm/day</p>
+            <span class="trigger-payout">₹800 payout</span>
+          </div>
+          <div class="trigger-card">
+            <span class="trigger-icon">🔥</span>
+            <h3>Extreme Heat</h3>
+            <p>Temperature &gt; 42°C for 3+ hrs</p>
+            <span class="trigger-payout">₹600 payout</span>
+          </div>
+          <div class="trigger-card">
+            <span class="trigger-icon">😷</span>
+            <h3>Severe Pollution</h3>
+            <p>AQI &gt; 300 for 4+ hrs</p>
+            <span class="trigger-payout">₹500 payout</span>
+          </div>
+          <div class="trigger-card">
+            <span class="trigger-icon">📱</span>
+            <h3>App Outage</h3>
+            <p>Platform down for 2+ hrs</p>
+            <span class="trigger-payout">₹400 payout</span>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- ═══════════════ DASHBOARD PAGE ═══════════════ -->
+  <main class="page-container hidden" id="page-dashboard">
+    <section class="page-shell">
+
+      <!-- Hero Panel -->
+      <section class="hero-panel">
+        <div class="hero-copy">
+          <p class="kicker">RideShield Dashboard</p>
+          <h1 id="dashboardWelcome">Welcome to RideShield</h1>
+          <p>Your parametric insurance control center. Monitor weather, view coverage, and track payouts — all
+            automatic.</p>
+          <span class="api-chip" id="policyStatusChip">No active policy</span>
+        </div>
+        <div class="story-card">
+          <h3>🛡️ RideShield Signal Deck</h3>
+          <p><strong>Income protection</strong> for delivery workers when cities break.</p>
+          <ul>
+            <li>Real-time weather & AQI monitoring</li>
+            <li>Automatic disruption triggers</li>
+            <li>Zero-claim payout pipeline</li>
+          </ul>
+          <p>Sit back — your coverage is working for you.</p>
+        </div>
+      </section>
+
+      <!-- Metrics -->
+      <section class="metrics-grid">
+        <article class="metric-card">
+          <p class="metric-title">Wallet Balance</p>
+          <p class="metric-value" id="walletBalanceMetric">₹0</p>
+          <p class="metric-help">Available payout balance</p>
+        </article>
+        <article class="metric-card">
+          <p class="metric-title">Policy Plan</p>
+          <p class="metric-value" id="policyPlanMetric">None</p>
+          <p class="metric-help">Current weekly plan</p>
+        </article>
+        <article class="metric-card">
+          <p class="metric-title">Claims This Week</p>
+          <p class="metric-value" id="claimsCountMetric">0</p>
+          <p class="metric-help">Auto-triggered payouts</p>
+        </article>
+        <article class="metric-card">
+          <p class="metric-title">Total Earned</p>
+          <p class="metric-value" id="totalEarnedMetric">₹0</p>
+          <p class="metric-help">All-time insurance payouts</p>
+        </article>
+      </section>
+
+      <!-- Weather & AQI Live Panel -->
+      <section class="weather-panel">
+        <article class="weather-card">
+          <h3>🌤️ Live Weather — <span id="weatherCity">Chennai</span></h3>
+          <div class="weather-grid">
+            <div class="weather-item">
+              <span class="weather-label">Temperature</span>
+              <span class="weather-value" id="weatherTemp">32°C</span>
+            </div>
+            <div class="weather-item">
+              <span class="weather-label">Rainfall</span>
+              <span class="weather-value" id="weatherRain">0 mm</span>
+            </div>
+            <div class="weather-item">
+              <span class="weather-label">Humidity</span>
+              <span class="weather-value" id="weatherHumidity">65%</span>
+            </div>
+            <div class="weather-item">
+              <span class="weather-label">AQI</span>
+              <span class="weather-value" id="weatherAQI">120</span>
+            </div>
+          </div>
+          <div class="weather-status" id="weatherStatus">
+            <span class="status-badge status-safe">✅ All Clear — No disruptions detected</span>
+          </div>
+        </article>
+      </section>
+
+      <!-- Simulation Panel -->
+      <section class="forms-grid">
+        <div class="form-card">
+          <h2>🎮 Simulate Disruption</h2>
+          <p class="form-hint">Test the parametric trigger engine by simulating weather events.</p>
+          <label>Event Type
+            <select id="simEventType">
+              <option value="rain">🌧️ Heavy Rain (&gt;50mm)</option>
+              <option value="heat">🔥 Extreme Heat (&gt;42°C)</option>
+              <option value="aqi">😷 Severe AQI (&gt;300)</option>
+              <option value="outage">📱 App Outage</option>
+            </select>
+          </label>
+          <label>Severity (1-5)
+            <input type="number" id="simSeverity" value="4" min="1" max="5">
+          </label>
+          <button type="button" onclick="simulateDisruption()" id="simBtn">⚡ Trigger Event</button>
+        </div>
+
+        <div class="form-card" id="coverageCard">
+          <h2>📋 My Coverage</h2>
+          <div id="coverageDetails">
+            <p class="coverage-empty">No active policy. <a href="#" onclick="navigate('plans')">Buy a plan</a> to get
+              started.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Claims History -->
+      <section class="tables-grid">
+        <article class="table-card" style="grid-column: 1 / -1">
+          <h3>📄 Claims History</h3>
+          <div class="table-wrap">
+            <table id="claimsTable">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Trigger</th>
+                  <th>Severity</th>
+                  <th>Status</th>
+                  <th>Payout</th>
+                  <th>Fraud Check</th>
+                </tr>
+              </thead>
+              <tbody id="claimsTableBody">
+                <tr>
+                  <td colspan="6">No claims yet — disruptions will trigger them automatically.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <!-- Wallet Transactions -->
+      <section class="tables-grid">
+        <article class="table-card" style="grid-column: 1 / -1">
+          <h3>💰 Wallet Transactions</h3>
+          <div class="table-wrap">
+            <table id="walletTable">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                  <th>Amount</th>
+                  <th>Balance</th>
+                </tr>
+              </thead>
+              <tbody id="walletTableBody">
+                <tr>
+                  <td colspan="5">No transactions yet.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <!-- ═══════════════ ADMIN PANEL ═══════════════ -->
+  <main class="page-container hidden" id="page-admin">
+    <section class="page-shell">
+      <section class="hero-panel">
+        <div class="hero-copy">
+          <p class="kicker">Admin Control Center</p>
+          <h1>RideShield Analytics Dashboard</h1>
+          <p>Monitor platform health, user metrics, claims performance, fraud alerts, and risk levels across cities.</p>
+        </div>
+        <div class="story-card">
+          <h3>📊 Platform Overview</h3>
+          <p><strong>Real-time analytics</strong> for insurance operations.</p>
+          <ul>
+            <li>Total users and active policies</li>
+            <li>Claims triggered and fraud alerts</li>
+            <li>Risk levels across cities</li>
+            <li>Revenue and loss ratios</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Admin Metrics -->
+      <section class="metrics-grid">
+        <article class="metric-card">
+          <p class="metric-title">Total Users</p>
+          <p class="metric-value" id="adminTotalUsers">0</p>
+          <p class="metric-help">Registered workers</p>
+        </article>
+        <article class="metric-card">
+          <p class="metric-title">Active Policies</p>
+          <p class="metric-value" id="adminActivePolicies">0</p>
+          <p class="metric-help">This week</p>
+        </article>
+        <article class="metric-card">
+          <p class="metric-title">Total Claims</p>
+          <p class="metric-value" id="adminTotalClaims">0</p>
+          <p class="metric-help">Auto-triggered</p>
+        </article>
+        <article class="metric-card">
+          <p class="metric-title">Fraud Flags</p>
+          <p class="metric-value" id="adminFraudFlags">0</p>
+          <p class="metric-help">Suspicious claims</p>
+        </article>
+      </section>
+
+      <!-- Admin Charts -->
+      <section class="forms-grid">
+        <div class="form-card chart-card">
+          <h2>Claims by Trigger Type</h2>
+          <canvas id="claimsByTypeChart"></canvas>
+        </div>
+        <div class="form-card chart-card">
+          <h2>Revenue vs Payouts</h2>
+          <canvas id="revenueChart"></canvas>
+        </div>
+      </section>
+
+      <!-- City Risk Map -->
+      <section class="form-card" style="margin-top: 1rem;">
+        <h2>🗺️ City Risk Levels</h2>
+        <div class="risk-map-grid" id="riskMapGrid">
+          <!-- Rendered by JS -->
+        </div>
+      </section>
+
+      <!-- Fraud Alerts -->
+      <section class="tables-grid" style="margin-top: 1rem;">
+        <article class="table-card" style="grid-column: 1 / -1">
+          <h3>🚨 Fraud Alerts</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Worker</th>
+                  <th>Alert Type</th>
+                  <th>Score</th>
+                  <th>Action</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody id="fraudAlertsBody">
+                <tr>
+                  <td colspan="5">No fraud alerts.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <!-- All Users Table -->
+      <section class="tables-grid" style="margin-top: 1rem;">
+        <article class="table-card" style="grid-column: 1 / -1">
+          <h3>👥 All Registered Workers</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>City</th>
+                  <th>Platform</th>
+                  <th>Plan</th>
+                  <th>Premium</th>
+                  <th>Claims</th>
+                  <th>Wallet</th>
+                </tr>
+              </thead>
+              <tbody id="adminUsersBody">
+                <tr>
+                  <td colspan="7">No users registered yet.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <!-- ═══════════════ PAYOUT OVERLAY ═══════════════ -->
+  <div class="payout-overlay hidden" id="payoutOverlay">
+    <div class="payout-card">
+      <button class="payout-close" onclick="closePayoutOverlay()">✕</button>
+      <div class="payout-icon" id="payoutIcon">⚠️</div>
+      <h2 id="payoutTitle">Disruption Detected!</h2>
+      <p id="payoutSubtitle">Heavy Rain Alert — Chennai</p>
+      <div class="payout-divider"></div>
+      <div class="payout-status">
+        <span class="status-badge status-approved" id="payoutStatus">Claim Auto-Approved ✅</span>
+      </div>
+      <div class="payout-amount" id="payoutAmount">₹800</div>
+      <p class="payout-detail" id="payoutDetail">Credited to Wallet</p>
+      <p class="payout-time" id="payoutTime"></p>
+
+      <!-- Fraud Check Details -->
+      <div class="fraud-section" id="payoutFraudSection">
+        <h4>🔍 AI Fraud Check</h4>
+        <div class="fraud-meter">
+          <div class="fraud-meter-fill" id="payoutFraudFill"></div>
+        </div>
+        <p class="fraud-score-text" id="payoutFraudScore">Fraud Score: 8/100 — Low Risk</p>
+        <p class="fraud-checks" id="payoutFraudChecks"></p>
+      </div>
+
+      <button class="payout-action-btn" onclick="closePayoutOverlay()">View Dashboard</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════ TOAST ═══════════════ -->
+  <div class="toast hidden" id="toast">
+    <span id="toastText"></span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
