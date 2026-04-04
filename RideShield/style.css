@@ -1,4 +1,4 @@
-/* ═══════════════ DESIGN TOKENS ═══════════════ */
+
 :root {
   --ink: #1a1e24;
   --paper: #fff9f1;
@@ -12,7 +12,7 @@
   --font-serif: 'Source Serif 4', serif;
 }
 
-/* ═══════════════ RESET & BASE ═══════════════ */
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -62,7 +62,7 @@ button:disabled { opacity: 0.7; cursor: not-allowed; }
 .error { color: var(--red); margin-top: 0.5rem; font-size: 0.88rem; }
 .notice { color: var(--green); }
 
-/* ═══════════════ HEADER ═══════════════ */
+
 .site-header {
   width: min(1200px, 92vw);
   margin: 0.9rem auto 0;
@@ -116,7 +116,7 @@ button:disabled { opacity: 0.7; cursor: not-allowed; }
   border-radius: 999px;
 }
 
-/* ═══════════════ PAGE CONTAINERS ═══════════════ */
+
 .page-container { animation: rise 500ms ease-out; }
 
 .landing-shell, .auth-shell, .plans-shell, .page-shell {
@@ -125,7 +125,7 @@ button:disabled { opacity: 0.7; cursor: not-allowed; }
   padding: 2rem 0 3rem;
 }
 
-/* ═══════════════ LANDING PAGE ═══════════════ */
+
 .landing-hero, .plans-hero {
   border-radius: 28px;
   border: 1px solid var(--line);
@@ -266,7 +266,7 @@ button:disabled { opacity: 0.7; cursor: not-allowed; }
 .persona-stat strong { font-size: 1.1rem; }
 .persona-stat span { font-size: 0.78rem; color: rgba(26, 30, 36, 0.6); }
 
-/* ═══════════════ AUTH PAGE ═══════════════ */
+
 .auth-shell { display: grid; place-items: center; min-height: 70vh; }
 .auth-card { width: min(520px, 100%); }
 
@@ -300,7 +300,7 @@ button:disabled { opacity: 0.7; cursor: not-allowed; }
 .auth-form { display: grid; gap: 0.6rem; }
 .auth-form label { display: grid; gap: 0.25rem; font-size: 0.82rem; }
 
-/* ═══════════════ PLANS PAGE ═══════════════ */
+
 .plans-grid {
   margin-top: 1rem;
   display: grid;
@@ -329,7 +329,7 @@ button:disabled { opacity: 0.7; cursor: not-allowed; }
 }
 .plan-features li::before { content: '✓ '; color: var(--green); font-weight: 600; }
 
-/* Risk Factor */
+
 .risk-factor-section, .triggers-section { margin-top: 2rem; }
 
 .risk-grid {
@@ -354,7 +354,7 @@ button:disabled { opacity: 0.7; cursor: not-allowed; }
 .risk-medium { background: rgba(255, 193, 7, 0.15); border: 1px solid rgba(255, 193, 7, 0.3); }
 .risk-low { background: rgba(10, 102, 37, 0.1); border: 1px solid rgba(10, 102, 37, 0.2); }
 
-/* Triggers */
+
 .triggers-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -384,7 +384,7 @@ button:disabled { opacity: 0.7; cursor: not-allowed; }
   font-size: 0.85rem;
 }
 
-/* ═══════════════ DASHBOARD ═══════════════ */
+
 .page-shell {
   display: grid;
   gap: 1.1rem;
@@ -430,7 +430,7 @@ button:disabled { opacity: 0.7; cursor: not-allowed; }
 .story-card ul { padding-left: 1.2rem; }
 .story-card li { font-size: 0.88rem; }
 
-/* Metrics */
+
 .metrics-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -464,7 +464,7 @@ button:disabled { opacity: 0.7; cursor: not-allowed; }
   color: rgba(26, 30, 36, 0.72);
 }
 
-/* Weather Panel */
+
 .weather-panel {
   display: grid;
   gap: 0.9rem;
@@ -516,7 +516,7 @@ button:disabled { opacity: 0.7; cursor: not-allowed; }
 .status-danger { background: rgba(242, 92, 58, 0.15); color: var(--red); border: 1px solid rgba(242, 92, 58, 0.3); }
 .status-approved { background: rgba(10, 102, 37, 0.12); color: var(--green); border: 1px solid rgba(10, 102, 37, 0.25); }
 
-/* Forms */
+
 .forms-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem; }
 
 .form-card, .table-card, .status-panel {
@@ -531,7 +531,7 @@ button:disabled { opacity: 0.7; cursor: not-allowed; }
 .form-card label { display: grid; gap: 0.25rem; font-size: 0.82rem; }
 .form-hint { font-size: 0.82rem; color: rgba(26, 30, 36, 0.65); margin: 0; }
 
-/* Coverage Details */
+
 .coverage-empty { color: rgba(26, 30, 36, 0.6); }
 .coverage-empty a { color: var(--cool); text-decoration: underline; }
 
@@ -547,7 +547,7 @@ button:disabled { opacity: 0.7; cursor: not-allowed; }
 .coverage-list li:last-child { border-bottom: none; }
 .coverage-payout { font-weight: 600; color: var(--green); }
 
-/* Tables */
+
 .tables-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem; }
 .table-wrap { overflow-x: auto; }
 
@@ -557,7 +557,7 @@ th { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.05em; colo
 
 .cap { text-transform: capitalize; }
 
-/* ═══════════════ ADMIN ═══════════════ */
+
 .chart-card { min-height: 250px; }
 .chart-card canvas { max-height: 220px; }
 
@@ -597,7 +597,7 @@ th { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.05em; colo
   transition: width 0.5s ease;
 }
 
-/* ═══════════════ PAYOUT OVERLAY ═══════════════ */
+
 .payout-overlay {
   position: fixed;
   inset: 0;
@@ -700,7 +700,7 @@ th { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.05em; colo
   font-size: 0.95rem;
 }
 
-/* ═══════════════ TOAST ═══════════════ */
+
 .toast {
   position: fixed;
   bottom: 2rem;
@@ -717,7 +717,7 @@ th { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.05em; colo
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
-/* ═══════════════ ANIMATIONS ═══════════════ */
+
 @keyframes rise {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
@@ -733,7 +733,7 @@ th { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.05em; colo
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ═══════════════ RESPONSIVE ═══════════════ */
+
 @media (max-width: 980px) {
   .site-header {
     border-radius: 20px;
