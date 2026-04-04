@@ -96,3 +96,6 @@ Afritha Shirin S
 
 Conclusion:
 RideShield transforms traditional insurance into a real-time, automated, and AI-driven protection system tailored for gig workers.
+
+Strategy Video:
+Click below to watch our 2-minute strategy explanation: Watch video-Strategy_video2.mp4
