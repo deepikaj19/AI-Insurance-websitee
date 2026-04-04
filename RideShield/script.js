@@ -1,9 +1,4 @@
-/* ═══════════════════════════════════════════════════════════
-   RideShield — Complete Application Logic (No API Keys)
-   All data is simulated locally with localStorage persistence
-   ═══════════════════════════════════════════════════════════ */
 
-// ═══════════════ DATA CONSTANTS ═══════════════
 const PLANS = [
     {
         id: 'essential',
@@ -53,7 +48,7 @@ const TRIGGERS = {
 
 const STORAGE_KEY = 'rideshield_data';
 
-// ═══════════════ STATE MANAGEMENT ═══════════════
+
 function getAppData() {
     try {
         const raw = localStorage.getItem(STORAGE_KEY);
@@ -83,7 +78,7 @@ function updateCurrentUser(updates) {
     return null;
 }
 
-// ═══════════════ NAVIGATION ═══════════════
+
 let currentPage = 'landing';
 
 function navigate(page) {
@@ -98,16 +93,16 @@ function navigate(page) {
     }
     currentPage = page;
 
-    // Page-specific renders
+    
     if (page === 'plans') renderPlans();
     if (page === 'dashboard') renderDashboard();
     if (page === 'admin') renderAdmin();
 
-    // Scroll to top
+    
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ═══════════════ AUTH ═══════════════
+
 let authMode = 'login';
 
 function switchAuthMode(mode) {
@@ -206,7 +201,6 @@ function updateHeader() {
     }
 }
 
-// ═══════════════ PLANS ═══════════════
 function renderPlans() {
     const user = getCurrentUser();
     const city = user?.city || 'Chennai';
@@ -259,7 +253,7 @@ function buyPlan(planId, price) {
         status: 'active',
     };
 
-    // Deduction transaction
+   
     const transaction = {
         id: Date.now(),
         date: now.toISOString(),
@@ -277,7 +271,7 @@ function buyPlan(planId, price) {
     renderPlans();
 }
 
-// ═══════════════ DASHBOARD ═══════════════
+
 function renderDashboard() {
     const user = getCurrentUser();
     if (!user) {
@@ -289,10 +283,10 @@ function renderDashboard() {
     const city = user.city || 'Chennai';
     const riskData = CITY_RISK[city] || CITY_RISK.Chennai;
 
-    // Welcome
+    
     document.getElementById('dashboardWelcome').textContent = `Welcome, ${user.name} 👋`;
 
-    // Policy status
+    
     if (user.policy) {
         document.getElementById('policyStatusChip').textContent =
             `Policy: ${user.policy.planName} • ₹${user.policy.weeklyPremium}/week • Active ✅`;
@@ -301,7 +295,7 @@ function renderDashboard() {
         document.getElementById('policyStatusChip').textContent = 'No active policy — Buy a plan to get covered';
     }
 
-    // Metrics
+    
     const totalEarned = (user.claims || [])
         .filter(c => c.status === 'approved')
         .reduce((sum, c) => sum + c.payout, 0);
@@ -311,23 +305,23 @@ function renderDashboard() {
     document.getElementById('claimsCountMetric').textContent = (user.claims || []).length;
     document.getElementById('totalEarnedMetric').textContent = `₹${totalEarned}`;
 
-    // Weather
+    
     document.getElementById('weatherCity').textContent = city;
     document.getElementById('weatherTemp').textContent = `${riskData.weather.temp}°C`;
     document.getElementById('weatherRain').textContent = `${riskData.weather.rain} mm`;
     document.getElementById('weatherHumidity').textContent = `${riskData.weather.humidity}%`;
     document.getElementById('weatherAQI').textContent = riskData.weather.aqi;
 
-    // Weather status
+   
     updateWeatherStatus(riskData.weather);
 
-    // Coverage
+   
     renderCoverage(user);
 
-    // Claims table
+    
     renderClaimsTable(user);
 
-    // Wallet table
+  
     renderWalletTable(user);
 }
 
@@ -431,7 +425,7 @@ function renderWalletTable(user) {
     tbody.innerHTML = rows.reverse().join('');
 }
 
-// ═══════════════ DISRUPTION SIMULATION ═══════════════
+
 function simulateDisruption() {
     const user = getCurrentUser();
     if (!user) {
@@ -452,14 +446,14 @@ function simulateDisruption() {
     const city = user.city || 'Chennai';
     const riskData = CITY_RISK[city] || CITY_RISK.Chennai;
 
-    // Run fraud detection
+    
     const fraudResult = runFraudDetection(user, eventType, severity);
 
-    // Calculate payout
+    
     let payout = Math.round(trigger.basePayout * (severity / 5));
     payout = Math.min(payout, user.policy.maxPayout);
 
-    // Check weekly cap
+  
     const weekClaims = (user.claims || []).filter(c => {
         const claimDate = new Date(c.date);
         const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
@@ -474,7 +468,7 @@ function simulateDisruption() {
     let statusText = 'Claim Auto-Approved ✅';
     let statusBadgeClass = 'status-approved';
 
-    // Fraud handling
+    
     if (fraudResult.score >= 70) {
         status = 'rejected';
         statusText = 'Claim Rejected — Fraud Detected 🚫';
@@ -484,10 +478,10 @@ function simulateDisruption() {
         status = 'review';
         statusText = 'Under Review — Needs Verification ⚠️';
         statusBadgeClass = 'status-warning';
-        payout = Math.round(payout * 0.5); // Partial payout
+        payout = Math.round(payout * 0.5); 
     }
 
-    // Create claim
+   
     const claim = {
         id: Date.now(),
         date: now.toISOString(),
@@ -518,7 +512,7 @@ function simulateDisruption() {
         transactions,
     });
 
-    // Update weather display to show the disruption
+    
     const simulatedWeather = { ...riskData.weather };
     if (eventType === 'rain') simulatedWeather.rain = 65 + Math.random() * 30;
     if (eventType === 'heat') simulatedWeather.temp = 43 + Math.random() * 4;
@@ -546,12 +540,12 @@ function simulateDisruption() {
     setTimeout(() => renderDashboard(), 300);
 }
 
-// ═══════════════ FRAUD DETECTION (AI Simulation) ═══════════════
+
 function runFraudDetection(user, eventType, severity) {
     const checks = [];
     let score = 0;
 
-    // 1. Duplicate claim check (same trigger, same day)
+    
     const today = new Date().toDateString();
     const duplicateToday = (user.claims || []).find(
         c => new Date(c.date).toDateString() === today && c.trigger === eventType
@@ -563,7 +557,7 @@ function runFraudDetection(user, eventType, severity) {
         checks.push('✅ No duplicate claims today');
     }
 
-    // 2. Velocity check (claims frequency)
+    
     const recentClaims = (user.claims || []).filter(c => {
         return Date.now() - new Date(c.date).getTime() < 7 * 24 * 60 * 60 * 1000;
     });
@@ -574,8 +568,8 @@ function runFraudDetection(user, eventType, severity) {
         checks.push(`✅ Normal claim frequency (${recentClaims.length}/7 days)`);
     }
 
-    // 3. Location verification (simulated)
-    const locationMatch = Math.random() > 0.08; // 92% chance of matching
+    
+    const locationMatch = Math.random() > 0.08; 
     if (!locationMatch) {
         score += 20;
         checks.push('⚠️ GPS mismatch: Location outside registered city zone');
@@ -583,8 +577,8 @@ function runFraudDetection(user, eventType, severity) {
         checks.push('✅ GPS location verified — within delivery zone');
     }
 
-    // 4. Activity validation (simulated)
-    const wasActive = Math.random() > 0.05; // 95% chance of being active
+    
+    const wasActive = Math.random() > 0.05; 
     if (!wasActive) {
         score += 15;
         checks.push('⚠️ No recent activity detected before disruption');
@@ -592,7 +586,7 @@ function runFraudDetection(user, eventType, severity) {
         checks.push('✅ Worker was active before disruption event');
     }
 
-    // 5. Earning consistency check
+    
     const earningsOk = Math.random() > 0.03;
     if (!earningsOk) {
         score += 10;
@@ -604,7 +598,7 @@ function runFraudDetection(user, eventType, severity) {
     return { score: Math.min(score, 100), checks };
 }
 
-// ═══════════════ PAYOUT OVERLAY ═══════════════
+
 function showPayoutOverlay(data) {
     const overlay = document.getElementById('payoutOverlay');
     document.getElementById('payoutIcon').textContent = data.icon;
@@ -616,7 +610,7 @@ function showPayoutOverlay(data) {
     document.getElementById('payoutDetail').textContent = data.amount > 0 ? 'Credited to Wallet' : 'No payout';
     document.getElementById('payoutTime').textContent = data.time;
 
-    // Fraud section
+   
     document.getElementById('payoutFraudFill').style.width = `${data.fraudScore}%`;
     document.getElementById('payoutFraudFill').style.background =
         data.fraudScore >= 70 ? '#d32f2f' :
@@ -641,7 +635,7 @@ function closePayoutOverlay() {
     document.getElementById('payoutOverlay').classList.add('hidden');
 }
 
-// ═══════════════ ADMIN PANEL ═══════════════
+
 function renderAdmin() {
     const data = getAppData();
     const users = data.users || [];
@@ -649,22 +643,22 @@ function renderAdmin() {
     const activePolicies = users.filter(u => u.policy?.status === 'active').length;
     const fraudFlags = allClaims.filter(c => c.fraudScore >= 40).length;
 
-    // Metrics
+   
     document.getElementById('adminTotalUsers').textContent = users.length;
     document.getElementById('adminActivePolicies').textContent = activePolicies;
     document.getElementById('adminTotalClaims').textContent = allClaims.length;
     document.getElementById('adminFraudFlags').textContent = fraudFlags;
 
-    // Risk Map
+    
     renderRiskMap();
 
-    // Users Table
+    
     renderAdminUsersTable(users);
 
-    // Fraud Alerts Table
+   
     renderFraudAlerts(allClaims);
 
-    // Charts
+   
     renderAdminCharts(users, allClaims);
 }
 
@@ -747,7 +741,7 @@ function renderFraudAlerts(allClaims) {
 }
 
 function renderAdminCharts(users, allClaims) {
-    // Claims by type chart
+   
     const claimsByType = {};
     Object.keys(TRIGGERS).forEach(k => { claimsByType[k] = 0; });
     allClaims.forEach(c => { claimsByType[c.trigger] = (claimsByType[c.trigger] || 0) + 1; });
@@ -775,7 +769,7 @@ function renderAdminCharts(users, allClaims) {
             },
         });
 
-        // Revenue vs Payouts
+        
         const revCtx = document.getElementById('revenueChart');
         if (revCtx._chart) revCtx._chart.destroy();
 
@@ -805,26 +799,26 @@ function renderAdminCharts(users, allClaims) {
     }
 }
 
-// ═══════════════ DYNAMIC PREMIUM CALCULATION (AI Simulation) ═══════════════
+
 function calculateDynamicPremium(baseRate, city, avgIncome) {
     const riskData = CITY_RISK[city] || CITY_RISK.Chennai;
     const zoneMultiplier = riskData.multiplier;
 
-    // Earnings tier factor
+   
     let earningsFactor = 1.0;
     if (avgIncome <= 600) earningsFactor = 0.9;
     else if (avgIncome <= 800) earningsFactor = 1.0;
     else if (avgIncome <= 1000) earningsFactor = 1.1;
     else earningsFactor = 1.2;
 
-    // Seasonality (monsoon months June-Sep get higher premium)
+    
     const month = new Date().getMonth();
     const seasonFactor = (month >= 5 && month <= 8) ? 1.15 : 1.0;
 
     return Math.round(baseRate * zoneMultiplier * earningsFactor * seasonFactor);
 }
 
-// ═══════════════ RISK PREDICTION (AI Simulation) ═══════════════
+
 function predictNextWeekRisk(city) {
     const riskData = CITY_RISK[city] || CITY_RISK.Chennai;
     const baseRisk = riskData.multiplier * 40;
@@ -832,7 +826,7 @@ function predictNextWeekRisk(city) {
     return Math.max(0, Math.min(100, Math.round(baseRisk + randomVariation)));
 }
 
-// ═══════════════ TOAST ═══════════════
+
 function showToast(message) {
     const toast = document.getElementById('toast');
     document.getElementById('toastText').textContent = message;
@@ -841,24 +835,24 @@ function showToast(message) {
     window._toastTimer = setTimeout(() => toast.classList.add('hidden'), 3500);
 }
 
-// ═══════════════ INIT ═══════════════
+
 document.addEventListener('DOMContentLoaded', function () {
     updateHeader();
 
-    // Seed demo data if empty
+    
     const data = getAppData();
     if (data.users.length === 0) {
         seedDemoData();
     }
 
-    // Navigate to landing
+   
     navigate('landing');
 });
 
 function seedDemoData() {
     const data = getAppData();
 
-    // Create demo users
+    
     const demoUsers = [
         {
             name: 'Ravi Kumar', phone: '9876543210', email: 'ravi@sample.com', password: 'test123',
