@@ -18,7 +18,6 @@
 
 <body>
 
-  <!-- ═══════════════ SITE HEADER ═══════════════ -->
   <header class="site-header" id="siteHeader">
     <a href="#" class="brand" onclick="navigate('landing')">🛡️ RideShield</a>
     <nav class="nav-row">
@@ -32,7 +31,7 @@
     </div>
   </header>
 
-  <!-- ═══════════════ LANDING PAGE ═══════════════ -->
+ 
   <main class="page-container" id="page-landing">
     <section class="landing-shell">
       <section class="landing-hero">
@@ -90,7 +89,7 @@
     </section>
   </main>
 
-  <!-- ═══════════════ AUTH PAGE ═══════════════ -->
+  
   <main class="page-container hidden" id="page-auth">
     <section class="auth-shell">
       <section class="auth-card">
@@ -146,7 +145,7 @@
     </section>
   </main>
 
-  <!-- ═══════════════ PLANS PAGE ═══════════════ -->
+
   <main class="page-container hidden" id="page-plans">
     <section class="plans-shell">
       <section class="plans-hero">
@@ -204,11 +203,11 @@
     </section>
   </main>
 
-  <!-- ═══════════════ DASHBOARD PAGE ═══════════════ -->
+ 
   <main class="page-container hidden" id="page-dashboard">
     <section class="page-shell">
 
-      <!-- Hero Panel -->
+      
       <section class="hero-panel">
         <div class="hero-copy">
           <p class="kicker">RideShield Dashboard</p>
@@ -229,7 +228,7 @@
         </div>
       </section>
 
-      <!-- Metrics -->
+     
       <section class="metrics-grid">
         <article class="metric-card">
           <p class="metric-title">Wallet Balance</p>
@@ -253,7 +252,7 @@
         </article>
       </section>
 
-      <!-- Weather & AQI Live Panel -->
+     
       <section class="weather-panel">
         <article class="weather-card">
           <h3>🌤️ Live Weather — <span id="weatherCity">Chennai</span></h3>
@@ -281,7 +280,7 @@
         </article>
       </section>
 
-      <!-- Simulation Panel -->
+      
       <section class="forms-grid">
         <div class="form-card">
           <h2>🎮 Simulate Disruption</h2>
@@ -309,7 +308,7 @@
         </div>
       </section>
 
-      <!-- Claims History -->
+     
       <section class="tables-grid">
         <article class="table-card" style="grid-column: 1 / -1">
           <h3>📄 Claims History</h3>
@@ -335,7 +334,7 @@
         </article>
       </section>
 
-      <!-- Wallet Transactions -->
+      
       <section class="tables-grid">
         <article class="table-card" style="grid-column: 1 / -1">
           <h3>💰 Wallet Transactions</h3>
@@ -362,7 +361,7 @@
     </section>
   </main>
 
-  <!-- ═══════════════ ADMIN PANEL ═══════════════ -->
+  
   <main class="page-container hidden" id="page-admin">
     <section class="page-shell">
       <section class="hero-panel">
@@ -383,7 +382,7 @@
         </div>
       </section>
 
-      <!-- Admin Metrics -->
+      
       <section class="metrics-grid">
         <article class="metric-card">
           <p class="metric-title">Total Users</p>
@@ -407,7 +406,7 @@
         </article>
       </section>
 
-      <!-- Admin Charts -->
+      
       <section class="forms-grid">
         <div class="form-card chart-card">
           <h2>Claims by Trigger Type</h2>
@@ -419,15 +418,15 @@
         </div>
       </section>
 
-      <!-- City Risk Map -->
+      
       <section class="form-card" style="margin-top: 1rem;">
         <h2>🗺️ City Risk Levels</h2>
         <div class="risk-map-grid" id="riskMapGrid">
-          <!-- Rendered by JS -->
+          
         </div>
       </section>
 
-      <!-- Fraud Alerts -->
+  
       <section class="tables-grid" style="margin-top: 1rem;">
         <article class="table-card" style="grid-column: 1 / -1">
           <h3>🚨 Fraud Alerts</h3>
@@ -452,7 +451,7 @@
         </article>
       </section>
 
-      <!-- All Users Table -->
+     
       <section class="tables-grid" style="margin-top: 1rem;">
         <article class="table-card" style="grid-column: 1 / -1">
           <h3>👥 All Registered Workers</h3>
@@ -481,7 +480,7 @@
     </section>
   </main>
 
-  <!-- ═══════════════ PAYOUT OVERLAY ═══════════════ -->
+  
   <div class="payout-overlay hidden" id="payoutOverlay">
     <div class="payout-card">
       <button class="payout-close" onclick="closePayoutOverlay()">✕</button>
@@ -496,7 +495,7 @@
       <p class="payout-detail" id="payoutDetail">Credited to Wallet</p>
       <p class="payout-time" id="payoutTime"></p>
 
-      <!-- Fraud Check Details -->
+     
       <div class="fraud-section" id="payoutFraudSection">
         <h4>🔍 AI Fraud Check</h4>
         <div class="fraud-meter">
@@ -510,7 +509,7 @@
     </div>
   </div>
 
-  <!-- ═══════════════ TOAST ═══════════════ -->
+  
   <div class="toast hidden" id="toast">
     <span id="toastText"></span>
   </div>
